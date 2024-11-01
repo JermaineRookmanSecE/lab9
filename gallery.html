@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Gallery</title>
+
+<style>
+body {
+    background-color: tan
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.content {
+    text-align: left;
+    background-color: burlywood;
+    border: 5px solid #000;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.logo {
+    height: 200px;
+    margin-left: 20px;
+}
+
+.image {
+    height: 300px;
+    margin-left: 20px;
+}
+
+button {
+    background-color: olive;
+    padding: 15px 15px;
+}
+
+button:hover {
+    background-color: lightblue;
+}
+    </style>
+
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <div class="header">
+            <div class="content">
+                <h1>The Image Archive</h1>
+                <p>Take a look at some interesting images across different types of media</p>
+            </div>
+        <img src="https://www.techsmith.com/blog/wp-content/uploads/2023/08/What-are-High-Resolution-Images.png" alt="logo" class="logo">
+    </div>
+
+<nav>
+    <button class="filter" data-filter="all">All</button>
+    <button class="filter" data-filter="TV-Shows">TV-Shows</button>
+    <button class="filter" data-filter="Videogames">Videogames</button>
+</nav>
+
+        <script>//Game category</script>
+        <section id="gallery">
+        <article class="gallery-item game">
+        <img src="https://assetsio.gnwcdn.com/SONIC_2024Campaign_KeyArt_CMYK_FINAL.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="image" class="image lightbox-trigger">
+        <p>Sonic</p>
+        
+        <img src="https://nintenduo.com/wp-content/uploads/2024/06/Metroid-Prime-4-Beyond.webp" alt="image" class="image lightbox-trigger">
+        <p>Metroid</p>
+
+        <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/04/atreus-kratos-boat-god-of-war-ragnarok-1.jpg" alt="image" class="image lightbox-trigger">
+        <p>God of War</p>
+
+        <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2024/05/the-tarnished-from-elden-ring-with-bosses.jpg" alt="image" class="image lightbox-trigger">
+        <p>Elden Ring</p>
+    
+        </article>
+
+        <script>//Show category</script>
+        <article class="gallery-item show">
+        <img src="https://www.cnet.com/a/img/resize/1c04eb2a513c0149455e07b04c742ddd0ccd7413/hub/2024/01/25/8c2e4e55-e2aa-4f98-91df-a43a511a3ccf/the-boys-season-4-prime-video.jpg?auto=webp&fit=crop&height=675&width=1200" alt="image" class="image lightbox-trigger">
+        <p>The Boys</p>
+        <img src="https://cinepremiere.com.mx/wp-content/uploads/2023/10/the-walking-dead-carrusel-900x506.jpg" alt="image" class="image lightbox-trigger">
+        <p>The Walking Dead</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJbE3M-xoL5bSfdYIx-vNEd7wT1sa-7YeViA&s" alt="image" class="image lightbox-trigger">
+        <p>The Fresh Prince of Bel-Air</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN8qk8yf7hi_pwrrICbJKB4Dc4Yih9rj8H9g&s" alt="image" class="image lightbox-trigger">
+        <p>Mr. Bean</p>
+    </article>
+</section>
+
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img" src="" alt="Lightbox Image">
+        <span id="lightbox-close">&times;</span>
+    </div>
+
+    <script>
+    $('.filter').on('click', function() {
+        const filterValue = $(this).data('filter');
+        if (filterValue === 'all') {
+            $('.gallery-item').fadeIn();
+        } else {
+            $('.gallery-item').fadeOut();
+            $('.' + filterValue).fadeIn();
+        }
+    });
+
+    $('.lightbox-trigger').on('click', function() {
+                const imgSrc = $(this).attr('src');
+                $('#lightbox-img').attr('src', imgSrc);
+                $('#lightbox').fadeIn();
+            });
+
+            $('#lightbox-close').on('click', function() {
+                $('#lightbox').fadeOut();
+            });
+
+            $('#lightbox').on('click', function(e) {
+                if (e.target !== this) return;
+                $(this).fadeOut();
+            });
+
+    </script>
+
+    </body>
+    </html>
